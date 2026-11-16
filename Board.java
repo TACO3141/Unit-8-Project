@@ -5,6 +5,7 @@ public class Board
   private int boardLength;
   private char[][] playerBoard;
   private char[][] computerBoard;
+  private int placedShips = 0;
 
   /**
   * Default ships are 5.
@@ -34,25 +35,49 @@ public class Board
     computerBoard = new char[10][10];
     boardHeight = 10;
     boardLength = 10;
+    for (int i = 0; i < boardHeight; i++)
+    {
+      for (int j = 0; j < boardLength; j++)
+      {
+        playerBoard[i][j] = '.';
+        computerBoard[i][j] = '.';
+      }
+    }
     this.ships = ships;
   }
-  public board(int width, int height)
+  public board(int length, int height)
   {
-    playerBoard = new char[width][height];
-    computerBoard = new char[width][height];
-    boardHeight = width;
+    playerBoard = new char[length][height];
+    computerBoard = new char[length][height];
+    boardLength = length;
     boardHeight = height;
+    for (int i = 0; i < boardHeight; i++)
+    {
+      for (int j = 0; j < boardLength; j++)
+      {
+        playerBoard[i][j] = '.';
+        computerBoard[i][j] = '.';
+      }
+    }
     ships = 5;
   }
-  public board(int width, int height, int ships)
+  public board(int length, int height, int ships)
   {
-    playerBoard = new char[width][height];
-    computerBoard = new char[width][height];
-    boardHeight = width;
+    playerBoard = new char[length][height];
+    computerBoard = new char[length][height];
+    boardLength = length;
     boardHeight = height;
+    for (int i = 0; i < boardHeight; i++)
+    {
+      for (int j = 0; j < boardLength; j++)
+      {
+        playerBoard[i][j] = '.';
+        computerBoard[i][j] = '.';
+      }
+    }
     this.ships = ships;
   }
-
+  
   public void addShip(int xStart, int yStart, int xEnd, int yEnd)
   {
     

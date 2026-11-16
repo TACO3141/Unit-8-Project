@@ -16,9 +16,9 @@ public class Board
   {
     playerBoard = new char[10][10];
     computerBoard = new char[10][10];
-    boardWidth = 10;
+    boardHeight = 10;
     boardLength = 10;
-    for (int i = 0; i < boardWidth; i++)
+    for (int i = 0; i < boardHeight; i++)
     {
       for (int j = 0; j < boardLength; j++)
       {
@@ -32,7 +32,7 @@ public class Board
   {
     playerBoard = new char[10][10];
     computerBoard = new char[10][10];
-    boardWidth = 10;
+    boardHeight = 10;
     boardLength = 10;
     this.ships = ships;
   }
@@ -40,7 +40,7 @@ public class Board
   {
     playerBoard = new char[width][height];
     computerBoard = new char[width][height];
-    boardWidth = width;
+    boardHeight = width;
     boardHeight = height;
     ships = 5;
   }
@@ -48,7 +48,7 @@ public class Board
   {
     playerBoard = new char[width][height];
     computerBoard = new char[width][height];
-    boardWidth = width;
+    boardHeight = width;
     boardHeight = height;
     this.ships = ships;
   }

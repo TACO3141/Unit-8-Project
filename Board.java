@@ -77,9 +77,12 @@ public class Board
     }
     this.ships = ships;
   }
-  
-  public void addShip(int xStart, int yStart, int xEnd, int yEnd)
+
+  /**
+  * shipType is either 'v' or 'h' (vertical/horizontal)
+  */
+  public void addShip(int xStart, int yStart, int xEnd, int yEnd, char shipType)
   {
-    
+    if ()
   }
 }

@@ -1,29 +1,34 @@
-public class Board {
+public class Board
+{
+  private String[][] squares = ;
 
-  private String[][] squares = ???;
-
-  public Board() {
+  public Board()
+  {
 
   }
 
-  public String toString() {
+  public String toString()
+  {
     return "";
   }
 
-  public boolean addShip(int row, int col, int len, boolean horizontal) {
+  public boolean addShip(int row, int col, int len, boolean horizontal)
+  {
     return false;
   }
 
-  public boolean foundShip(int len) {
+  public boolean foundShip(int len)
+  {
     return false;
   }
 
-  public int shoot(int row, int col) {
+  public int shoot(int row, int col)
+  {
     return 0;
   }
 
-  public boolean gameOver() {
+  public boolean gameOver()
+  {
     return false;
   }
-
 }

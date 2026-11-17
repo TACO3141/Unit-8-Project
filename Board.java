@@ -28,7 +28,51 @@ public class Board
 
   public boolean addShip(int row, int col, int len, boolean horizontal)
   {
-    return false;
+    if (row < 0 || col < 0 || row >= squares.length || col >= squares[0].length)
+    {
+      return false;
+    }
+    if (horizontal)
+    {
+      if (col + len > squares.length)
+      {
+        return false;
+      }
+      for (int i = col; i < col + len; i++)
+      {
+        if(!squares[row][i].equals("-"))
+        {
+          return false;
+        }
+      }
+
+      for (int i = col; i < col + len; i++)
+      {
+        squares[row][i] = "b";
+      }
+    }
+    else
+    {
+      // If end of ship is off grid, we return false
+      if (row + len > squares[0].length)
+      {
+        return false;
+      }
+      
+      for (int i = row; i < row + len; i++)
+      {
+        if(!squares[i][col].equals("-"))
+        {
+          return false;
+        }
+      }
+
+      for (int i = row; i < row + len; i++)
+      {
+        squares[i][col] = "b";
+      }
+      return true;
+    }
   }
 
   public boolean foundShip(int len)
@@ -43,6 +87,16 @@ public class Board
 
   public boolean gameOver()
   {
-    return false;
+    for (String[] r : squares)
+    {
+      for (String s : r)
+      {
+        if (s.equals("b"))
+        {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }

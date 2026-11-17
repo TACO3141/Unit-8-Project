@@ -6,6 +6,7 @@ public class Board
   private char[][] playerBoard;
   private char[][] computerBoard;
   private int placedShips = 0;
+  private int[][][] shipLocations; // First is the ship. Second is the x. Third is the y.
 
   /**
   * Default ships are 5.
@@ -28,6 +29,7 @@ public class Board
       }
     }
     ships = 5;
+    shipLocations = new int[][][];
   }
   public board(int ships)
   {
@@ -47,8 +49,8 @@ public class Board
   }
   public board(int length, int height)
   {
-    playerBoard = new char[length][height];
-    computerBoard = new char[length][height];
+    playerBoard = new char[height][length];
+    computerBoard = new char[height][length];
     boardLength = length;
     boardHeight = height;
     for (int i = 0; i < boardHeight; i++)
@@ -63,8 +65,8 @@ public class Board
   }
   public board(int length, int height, int ships)
   {
-    playerBoard = new char[length][height];
-    computerBoard = new char[length][height];
+    playerBoard = new char[height][length];
+    computerBoard = new char[height][length];
     boardLength = length;
     boardHeight = height;
     for (int i = 0; i < boardHeight; i++)
@@ -78,11 +80,65 @@ public class Board
     this.ships = ships;
   }
 
-  /**
-  * shipType is either 'v' or 'h' (vertical/horizontal)
-  */
-  public void addShip(int xStart, int yStart, int xEnd, int yEnd, char shipType)
+  public int getTotalShips()
   {
-    if ()
+    return ships;
+  }
+
+  public int getPlacedShips()
+  {
+    return placedShips;
+  }
+
+  /**
+  * shipType is either 'v' or 'h' (vertical/horizontal).
+  * Returns true for success, false for failure.
+  * Precondition: xStart and yStart are given as indexes of the array.
+  * Ships will be created going down and right for vertical and horizontal respectively.
+  */
+  public boolean addShip(int xStart, int yStart, int length, char shipType)
+  {
+    if (placedShips == ships)
+    {
+      return false;
+    }
+    if (Character.toUpperCase(shipType).equals(Character.toUpperCase('h')))
+    {
+      if ((xStart + length < boardLength) && xStart > -1 && length > 0 && yStart > -1)
+      {
+        for (int i = xStart; i <= xStart + length; i++)
+        {
+          playerBoard[yStart][i] = 'O';
+        }
+        placedShips++;
+        return true;
+      }
+    }
+    return false;
+    else if (Character.toUpperCase(shipType).equals(Character.toUpperCase('v')))
+    {
+      if ((yStart + length < boardHeight) && xStart > -1 && length > 0 && yStart > -1)
+      {
+        for (int i = yStart; i <= yStart + length; i++)
+        {
+          playerBoard[i][xStart] = 'O';
+        }
+        placedShips++;
+        return true;
+      }
+    }
+    return false;
+    else
+    {
+      return false
+    }
+  }
+  
+  /**
+  * Returns true if ship doesn't border any other ship. False otherwise.
+  * Also returns false if ship is unplaceable ie. xStart or yStart are out of bounds etc
+  */
+  private boolean shipBorders(int xStart, int yStart, )
+  {
   }
 }

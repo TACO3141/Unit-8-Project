@@ -71,13 +71,28 @@ public class Board
       {
         squares[i][col] = "b";
       }
-      return true;
     }
+    return true;
   }
 
   public boolean foundShip(int len)
   {
-    return false;
+    for (int r = 0; r < squares.length; r++)
+    {
+      for (int c = 0; c < squares[0].length; c++)
+      {
+        int count = 0;
+        while (c < squares[r].length && squares[r][c].equals("b"))
+        {
+          count++;
+          c++;
+        }
+        if (count == len)
+        {
+          return true;
+        }
+      }
+    }
   }
 
   public int shoot(int row, int col)

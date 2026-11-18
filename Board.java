@@ -93,10 +93,41 @@ public class Board
         }
       }
     }
+    for (int c = 0; c < squares.length; c++)
+    {
+      for (int r = 0; r < squares[0].length; r++)
+      {
+        int count = 0;
+        while (r < squares.length && squares[r][c].equals("b"))
+        {
+          count++;
+          r++;
+        }
+        if (count == len)
+        {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   public int shoot(int row, int col)
   {
+    if (row < 0 || col < 0 || row >= squares.length || col >= squares[0].length)
+    {
+      return -1;
+    }
+    if (squares[row][col].equals("b"))
+    {
+      squares[row][col] = "x";
+      return 1;
+    }
+    if (squares[row][col].equals("b") || squares[row][col].equals("x"))
+    {
+      return 2;
+    }
+    squares[row][col] = "m";
     return 0;
   }
 
